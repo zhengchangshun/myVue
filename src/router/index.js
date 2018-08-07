@@ -8,11 +8,10 @@ Vue.use(Router)
 NProgress.configure({ showSpinner: false })// NProgress Configuration
 
 const routes = (req => {
-    let route = req
-        .keys()
-        .map(key => req(key).default)[0]
-        .map(item => item)
-    return route
+    let results = [];
+    let alls = req.keys().map(key => req(key).default)
+    alls.forEach(item => item.map(v => results.push(v)))
+    return results
 })(require.context('./', true, /\-route\.js$/))
 
 
