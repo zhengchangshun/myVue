@@ -4,6 +4,6 @@
 
 import {ajax} from 'tf-components'
 
-export function queryCompany(params) {
-    return ajax.post('/tf56mall/pubLine/queryCompany', params)
+export function queryExampleData(params) {
+    return ajax.post('/example/queryExampleData', params)
 }

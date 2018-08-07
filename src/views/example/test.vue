@@ -18,7 +18,7 @@
         },
 
         mounted() {
-            this.getCurrentMsg({
+            this.queryExampleData({
                 a: 111
             });
         },
@@ -33,7 +33,7 @@
 
             },
             ...mapActions([
-                'getCurrentMsg',
+                'queryExampleData',
             ]),
         },
 

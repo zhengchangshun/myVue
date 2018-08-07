@@ -1,6 +1,9 @@
 <template>
     <div class="currentMsg">
-        {{currentMsg}}
+        <h1>{{msg}}</h1>
+            <div>用户名：{{exampleData.userName}}</div>
+            <div>用户id：{{exampleData.id}}</div>
+            <div>手机号：{{exampleData.mobileNum}}</div>
     </div>
 </template>
 
@@ -10,11 +13,12 @@
         name: "user",
         data() {
             return {
+                msg:"您正在用vuex共享组件间的数据"
             }
         },
         computed:{
             ...mapGetters([
-                'currentMsg'
+                'exampleData'
             ])
         }
     }

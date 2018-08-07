@@ -5,13 +5,19 @@ import App from './App'
 import router from './router'
 import store from './store/index'
 
+
+// 数据mock
+import './mock'
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  store,
-  components: { App },
-  template: '<App/>'
+    el: '#app',
+    router,
+    store,
+    components: {
+        App
+    },
+    template: '<App/>'
 })
