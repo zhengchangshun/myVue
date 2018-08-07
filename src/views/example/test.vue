@@ -1,0 +1,64 @@
+<template>
+    <div class="red">
+        <div class="green">
+            哈哈
+        </div>
+        <router-link to="/message">查看vuex共享的message</router-link>
+    </div>
+</template>
+
+<script>
+    import {mapActions} from 'vuex'
+
+    export default {
+        name: '',
+        component: '',
+        data() {
+            return {}
+        },
+
+        mounted() {
+            this.getCurrentMsg({
+                a: 111
+            });
+        },
+
+        destroyed() {
+
+        },
+
+        methods: {
+            // 按钮事件 内部事件
+            _btnClick() {
+
+            },
+            ...mapActions([
+                'getCurrentMsg',
+            ]),
+        },
+
+        computed: {
+            name() {
+                return this.data
+            }
+        },
+
+        watch: {
+            data(newValue, oldValue) {
+
+            }
+        },
+
+    }
+</script>
+
+<style lang="less" scoped>
+    .red {
+        color: red;
+        .green {
+            color: green;
+            font-size: 30px;
+        }
+    }
+
+</style>
