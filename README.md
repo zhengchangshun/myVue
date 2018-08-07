@@ -1,7 +1,7 @@
-# cd-market
+# myVue
 
 > A Vue.js project
-
+  基于vue + vue-router + vuex + es6 + mock + axios的vue脚手架
 ## Build Setup
 
 ``` bash
