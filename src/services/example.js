@@ -2,8 +2,8 @@
  * Created by zhengchangshun on 2018/8/6.
  */
 
-import {ajax} from 'tf-components'
+import request from '@/libs/request'
 
 export function queryExampleData(params) {
-    return ajax.post('/example/queryExampleData', params)
+    return request('/example/queryExampleData', params)
 }
