@@ -3,7 +3,7 @@
         <h1>{{msg}}</h1>
             <div>用户名：{{exampleData.userName}}</div>
             <div>用户id：{{exampleData.id}}</div>
-            <div>手机号：{{exampleData.mobileNum}}</div>
+            <div>手机号：{{exampleData.phoneNum}}</div>
     </div>
 </template>
 

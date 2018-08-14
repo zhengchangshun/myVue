@@ -12,7 +12,7 @@
 
     export default {
         name: '',
-        component: '',
+        components: '',
         data() {
             return {}
         },
@@ -52,7 +52,7 @@
     }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
     .red {
         color: red;
         .green {

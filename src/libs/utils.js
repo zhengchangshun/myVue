@@ -8,5 +8,4 @@ utils.to404 = () => {
 
 }
 
-
 export default utils

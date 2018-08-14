@@ -16,7 +16,7 @@ const example = {
         async queryExampleData({dispatch, commit}, params) {
             const data = await queryExampleData(params)
             console.log(data);
-            commit('SET_EXAMPLEDATA', data)
+            commit('SET_EXAMPLEDATA', data.data)
         }
     }
 }
