@@ -2,6 +2,8 @@ import axios from 'axios'
 import {Message} from 'element-ui'
 import {EnumErrorCode} from './enums'
 import utils from './utils'
+import fetchJsonp from 'fetch-jsonp';
+import qs from 'qs';
 
 axios.interceptors.response.use((res) => {
     return res
@@ -15,29 +17,27 @@ axios.interceptors.response.use((res) => {
 export const request = (url, options = {}, method = 'get') => {
     let key = ~['delete', 'get', 'head'].indexOf(method.toLowerCase()) ? 'params' : 'data'
     // 过滤空的筛选条件
-    if (['get'].indexOf(method.toLowerCase()) > -1) {
-        options = Object.assign({}, options)
-        for (let key in options) {
-            if (options.hasOwnProperty(key)) {
-                if (options[key] === '') {
-                    delete options[key]
-                }
+    options = Object.assign({}, options)
+    for (let key in options) {
+        if (options.hasOwnProperty(key)) {
+            if (options[key] === undefined || options[key] === '' ) {
+                delete options[key]
             }
         }
     }
 
     //全局的默认过滤器
-    return axios(Object.assign({'url': url, 'method': method}, {[key]: options}))
+    return axios(Object.assign({
+        'url': url,
+        'method': method
+    }, {
+        [key]: options
+    }))
         .then(res => {
             //axios对response进行了一层封装，实际后端返回的响应在res.data中
             if (res.data.code === 0) {
                 return res.data
             } else {
-                console.error('api error result', res)
-                Message.error(res.data.message)
-                if (res.data.code === EnumErrorCode.NotFound) {
-                    utils.to404()
-                }
                 /**
                  *   错误码处理
                  */
@@ -54,3 +54,18 @@ export const requestPost = (url, options = {}) => {
     return request(url, options, 'post')
 }
 
+function stitchUrlParam(url, param) {
+    let mark = url.indexOf('?') === -1 ? '?' : '&';
+    return url + mark + qs.stringify(param);
+}
+
+function parseJSON(response) {
+    return response.json();
+}
+
+export const requestJsonp = (url, options = {}) => {
+    url = stitchUrlParam(url, options);
+    return fetchJsonp(url, options)
+        .then(parseJSON)
+        .then((data) => data);
+}

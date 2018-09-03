@@ -12,7 +12,7 @@
             return {}
         },
 
-        mounted() {
+        created() {
         },
 
         destroyed() {

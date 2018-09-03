@@ -19,7 +19,6 @@ const routes = (req => {
 
 
 const router = new Router({
-    mode: 'history',
     routes: routes
 })
 

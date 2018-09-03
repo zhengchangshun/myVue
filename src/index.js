@@ -7,6 +7,7 @@ import store from './store/index'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import * as filters from './filters'; /*global filters*/
+import components from './components';
 // 数据mock
 import './mock';
 
@@ -17,6 +18,12 @@ Vue.config.productionTip = false
 /*注册全局过滤器*/
 Object.keys(filters).forEach(key => {
     Vue.filter(key, filters[key])
+})
+
+/*注册全局公共组件*/
+Object.keys(components).forEach((key) => {
+    var name = key.replace(/(\w)/, (v) => v.toUpperCase()) // 首字母大写
+    Vue.component(`${name}`, components[key])
 })
 
 /* eslint-disable no-new */

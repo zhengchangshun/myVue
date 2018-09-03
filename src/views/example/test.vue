@@ -17,7 +17,7 @@
             return {}
         },
 
-        mounted() {
+        created() {
             this.queryExampleData({
                 a: 111
             });
